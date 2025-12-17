@@ -1,213 +1,152 @@
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-
-body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: flex-start; /* top aligned */
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; 
+    background-color: #f1f5f9;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-
 
 .container {
-  background: #ffffff;
-  width: 95%;           /* almost full width on mobile */
-  max-width: none;      /* remove restrictive max-width */
-  min-height: 90vh;     /* use most of screen height */
-  padding: 1.5rem;
-  margin-top: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: #fff;
+    margin: 0 auto;
+}
 
-  display: flex;
-  flex-direction: column;
+
+.header-content {
+    padding: 1.25rem;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 10;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-  color: #1f2933;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1e293b;
 }
 
-
-.balance {
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #111827;
+.summary-card {
+    background: #1e293b;
+    color: white;
+    padding: 1.25rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
 }
 
+.balance-section { text-align: center; margin-bottom: 1rem; }
+.balance-section span { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; }
+.balance-section h1 { font-size: 2rem; margin-top: 4px; }
 
-.summary {
-  background: #f1f5f9;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.summary p {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.95rem;
-  margin: 0.4rem 0;
-  color: #374151;
-}
-
-.summary span {
-  font-weight: bold;
-}
-
+.stats-row { display: flex; gap: 10px; }
+.stat-box { flex: 1; background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 12px; text-align: center; }
+.stat-box span { font-size: 0.7rem; display: block; margin-bottom: 4px; }
+.stat-box p { font-weight: bold; font-size: 1rem; }
+.stat-box.income p { color: #4ade80; }
+.stat-box.expense p { color: #f87171; }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 1rem;
+    width: 100%; /* Ensure form doesn't overflow */
 }
 
-input {
-  padding: 0.65rem;
-  font-size: 0.95rem;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
+.input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
 }
 
-input:focus {
-  outline: none;
-  border-color: #6366f1;
-}
-
-button {
-  padding: 0.65rem;
-  font-size: 0.95rem;
-  border-radius: 6px;
-  border: none;
-  background: #4f46e5;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #4338ca;
+input { 
+    
+    flex: 1; 
+    min-width: 0; /* Important: allows flex items to shrink below their content size */
+    width: 100%; 
+    
+    padding: 12px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 10px; 
+    font-size: 16px; 
+    background: #fff;
 }
 
 
-.list {
-  list-style: none;
-  margin-top: 1rem;
-
-  flex: 1;
-  overflow-y: auto; /* scroll inside card if too many items */
+#text {
+    flex: 2; 
 }
 
+#amount {
+    flex: 1;
+}
+
+.add-btn {
+    width: 100%; 
+    background: #4f46e5;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.scroll-area {
+    flex: 1;
+    overflow-y: scroll; /* Force scroll functionality */
+    padding: 1rem 1.25rem;
+    background: #f8fafc;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.scroll-area::-webkit-scrollbar { width: 6px; }
+.scroll-area::-webkit-scrollbar-track { background: transparent; }
+.scroll-area::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+}
+
+.list { list-style: none; }
 .list li {
-  background: #f9fafb;
-  border-radius: 6px;
-  padding: 0.75rem;
-  margin-bottom: 0.6rem;
-  border-left: 5px solid;
-  font-size: 0.95rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.list li span {
-  word-break: break-word;
-}
-
-.list li button {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  color: #ef4444;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-.list li button:hover {
-  color: #b91c1c;
-}
-
-.list li.income {
-  border-color: #10b981;
-}
-
-.list li.expense {
-  border-color: #ef4444;
-}
-
-
-@media (min-width: 768px) {
-  body {
-    align-items: center; /* vertical center on tablet */
-    padding: 2rem;
-  }
-
-  .container {
-    width: 90%;
-    max-width: 520px;
-    min-height: auto;
-    padding: 2rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  .balance {
-    font-size: 1.6rem;
-  }
-
-  .summary p {
-    font-size: 1rem;
-  }
-
-  input,
-  button {
-    font-size: 1rem;
-    padding: 0.75rem;
-  }
-
-  .list li {
-    flex-direction: row;
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
-  }
-
-  .list li button {
-    font-size: 1.2rem;
-  }
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    border-left: 5px solid #64748b;
 }
+.list li.income { border-left-color: #10b981; }
+.list li.expense { border-left-color: #ef4444; }
 
 
-@media (min-width: 1024px) {
-  .container {
-    max-width: 600px;
-  }
+.footer-action { padding: 1rem 1.25rem; flex-shrink: 0; background: #fff; border-top: 1px solid #e2e8f0; }
+.export-btn { width: 100%; padding: 12px; border: 1px solid #cbd5e1; background: #fff; border-radius: 10px; font-weight: 600; color: #475569; }
 
-  h2 {
-    font-size: 2rem;
-  }
 
-  .summary p {
-    font-size: 1rem;
-  }
-
-  .list li {
-    padding: 0.8rem 1rem;
-  }
+@media (min-width: 600px) {
+    body { display: flex; justify-content: center; align-items: center; overflow: auto; }
+    .container {
+        width: 400px;
+        height: 90vh;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
 }

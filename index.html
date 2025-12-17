@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Expense Tracker Pro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Expense Tracker</h2>
-    <div class="summary">
-      <p>Balance: <span id="balance">₹0.00</span></p>
-      <p>Income: <span id="income">₹0.00</span></p>
-      <p>Expense: <span id="expense">₹0.00</span></p>
+    <div class="container">
+        <header class="header-content">
+            <h2>Expense Tracker</h2>
+            
+            <div class="summary-card">
+                <div class="balance-section">
+                    <span>Total Balance</span>
+                    <h1 id="balance">₹0.00</h1>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-box income">
+                        <span>Income</span>
+                        <p id="income">₹0.00</p>
+                    </div>
+                    <div class="stat-box expense">
+                        <span>Expense</span>
+                        <p id="expense">₹0.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form">
+                <div class="input-group">
+                    <input type="text" id="text" placeholder="Description" required />
+                    <input type="number" id="amount" placeholder="Amount (+/-)" required />
+                </div>
+                <button type="submit" class="add-btn">Add Transaction</button>
+            </form>
+        </header>
+
+        <main class="scroll-area">
+            <ul id="transactions" class="list">
+                </ul>
+        </main>
+
+        <footer class="footer-action">
+            <button id="exportCsv" class="export-btn">Export to CSV</button>
+        </footer>
     </div>
 
-    <form id="form">
-      <input type="text" id="text" placeholder="Description" required />
-      <input type="number" id="amount" placeholder="Amount (+/-)" required />
-      <button type="submit">Add Transaction</button>
-    </form>
-
-    <ul id="transactions" class="list"></ul>
-    <button id="exportCsv">Export CSV</button>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
