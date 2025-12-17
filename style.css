@@ -141,3 +141,52 @@ button:hover {
 .list li button:hover {
   color: #b91c1c;
 }
+@media (min-width: 768px) {
+  body {
+    padding: 3rem;
+  }
+
+  .container {
+    max-width: 520px;
+    padding: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .balance {
+    font-size: 1.5rem;
+  }
+
+  input,
+  button {
+    font-size: 1rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .list li {
+    font-size: 0.95rem;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    align-items: center;
+  }
+
+  .container {
+    max-width: 600px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .summary p {
+    font-size: 1rem;
+  }
+
+  .list li {
+    padding: 0.8rem 1rem;
+  }
+}
