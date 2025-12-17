@@ -10,26 +10,43 @@ body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: linear-gradient(135deg, #e0e7ff, #f8fafc);
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
+  justify-content: center; /* center horizontally */
+  align-items: flex-start; /* top aligned */
 }
+
 
 .container {
   background: #ffffff;
-  padding: 2rem;
+  width: 95%;           /* almost full width on mobile */
+  max-width: none;      /* remove restrictive max-width */
+  min-height: 90vh;     /* use most of screen height */
+  padding: 1.5rem;
+  margin-top: 1rem;
   border-radius: 12px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
+  display: flex;
+  flex-direction: column;
+}
 
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
   color: #1f2933;
+}
+
+
+.balance {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #111827;
 }
 
 
@@ -37,28 +54,19 @@ h2 {
   background: #f1f5f9;
   padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .summary p {
   display: flex;
   justify-content: space-between;
-  margin: 0.4rem 0;
   font-size: 0.95rem;
+  margin: 0.4rem 0;
   color: #374151;
 }
 
 .summary span {
   font-weight: bold;
-}
-
-
-.balance {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #111827;
 }
 
 
@@ -69,10 +77,10 @@ form {
 }
 
 input {
-  padding: 0.6rem 0.7rem;
+  padding: 0.65rem;
+  font-size: 0.95rem;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 0.9rem;
 }
 
 input:focus {
@@ -80,16 +88,14 @@ input:focus {
   border-color: #6366f1;
 }
 
-
 button {
-  padding: 0.6rem;
-  border-radius: 6px;
-  background: #4f46e5;
-  color: #ffffff;
+  padding: 0.65rem;
   font-size: 0.95rem;
+  border-radius: 6px;
   border: none;
+  background: #4f46e5;
+  color: white;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 button:hover {
@@ -99,28 +105,41 @@ button:hover {
 
 .list {
   list-style: none;
-  padding: 0;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+
+  flex: 1;
+  overflow-y: auto; /* scroll inside card if too many items */
 }
 
 .list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 0.8rem;
-  margin-bottom: 0.6rem;
   background: #f9fafb;
   border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.6rem;
   border-left: 5px solid;
-  font-size: 0.9rem;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  font-size: 0.95rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.list li:hover {
-  transform: scale(1.01);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+.list li span {
+  word-break: break-word;
 }
 
+.list li button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.list li button:hover {
+  color: #b91c1c;
+}
 
 .list li.income {
   border-color: #10b981;
@@ -130,25 +149,18 @@ button:hover {
   border-color: #ef4444;
 }
 
-.list li button {
-  background: transparent;
-  color: #ef4444;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
 
-.list li button:hover {
-  color: #b91c1c;
-}
 @media (min-width: 768px) {
   body {
-    padding: 3rem;
+    align-items: center; /* vertical center on tablet */
+    padding: 2rem;
   }
 
   .container {
+    width: 90%;
     max-width: 520px;
-    padding: 2.5rem;
+    min-height: auto;
+    padding: 2rem;
   }
 
   h2 {
@@ -156,24 +168,33 @@ button:hover {
   }
 
   .balance {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .summary p {
+    font-size: 1rem;
   }
 
   input,
   button {
     font-size: 1rem;
-    padding: 0.7rem 0.8rem;
+    padding: 0.75rem;
   }
 
   .list li {
-    font-size: 0.95rem;
-  }
-}
-@media (min-width: 1024px) {
-  body {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    font-size: 1rem;
   }
 
+  .list li button {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media (min-width: 1024px) {
   .container {
     max-width: 600px;
   }
